@@ -515,6 +515,16 @@ public final class MapboxMap: MapboxMapProtocol {
     public func point(for coordinate: CLLocationCoordinate2D) -> CGPoint {
         return __map.pixelForCoordinate(for: coordinate).point.fit(to: size)
     }
+    
+    /// Converts a map coordinate to a `CGPoint`, relative to the `MapView` without clamping it to the view bounds
+    ///
+    /// This API isn't supported by Globe projection.
+    ///
+    /// - Parameter coordinate: The coordinate to convert.
+    /// - Returns: A `CGPoint` relative to the `UIView`.
+    public func rawPoint(for coordinate: CLLocationCoordinate2D) -> CGPoint {
+        return __map.pixelForCoordinate(for: coordinate).point
+    }
 
     /// Converts map coordinates to an array of `CGPoint`, relative to the `MapView`.
     ///
